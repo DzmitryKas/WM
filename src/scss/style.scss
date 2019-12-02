@@ -1,6 +1,372 @@
-ul {
-  background-color: red;
-  li {
+@import "reset";
+$font-family: "Roboto", sans-serif;
+$color-text: #4f4f4f;
+$color-link: #2f80ed;
+$bgc-white: white;
+
+body {
+  background-color: #d9d9d9;
+}
+
+.wrapper-header {
+  max-width: 1140px;
+  margin: 0 auto;
+  .wrapper-title {
+    background-color: $bgc-white;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.header-title {
+  font-family: $font-family;
+  padding-left: 16px;
+  color: $color-text;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.header-navigation {
+  background-color: $bgc-white;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  ul {
+    min-width: 400px;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 16px;
+    li {
+      a {
+        font-family: $font-family;
+        text-decoration: none;
+        color: $color-link;
+        &:hover {
+          color: $color-text;
+        }
+      }
+    }
+  }
+}
+
+.main-wrapper,
+.wrapper-footer {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.wrapper-breadcrumb {
+  margin-top: 13px;
+  ul {
+    padding-left: 13px;
+    max-width: 200px;
+    display: flex;
+    justify-content: space-between;
+    li {
+      &:not(:last-child):after {
+        content: "\003E";
+        color: black;
+        padding-left: 25px;
+      }
+      a {
+        text-decoration: none;
+        color: $color-link;
+        font-family: $font-family;
+        font-size: 12px;
+        &:hover {
+          color: $color-text;
+        }
+      }
+    }
+  }
+}
+
+.section-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filter {
+  width: 270px;
+  height: 596px;
+  margin-top: 63px;
+  background-color: $bgc-white;
+}
+
+.results {
+  margin: 16px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  width: 238px;
+  margin: 0 auto;
+  border-bottom: 1px solid #bdbdbd;
+  color: #333333;
+  font-family: $font-family;
+  font-size: 16px;
+}
+
+.param1,
+.param2,
+.param3,
+.param4 {
+  margin-top: 16px;
+  margin-left: 16px;
+  color: #333333;
+  font-family: $font-family;
+  font-size: 16px;
+}
+
+.value1,
+.value2 {
+  margin-top: 11px;
+  margin-left: 16px;
+  color: $color-text;
+  font-family: $font-family;
+  font-size: 16px;
+}
+
+.wrapper-input {
+  display: flex;
+  margin-top: 11px;
+  input {
+    width: 110px;
+    height: 35px;
+    margin-left: 16px;
+  }
+}
+
+.param4 {
+  input {
+    margin-top: 11px;
+    width: 238px;
+    height: 35px;
+  }
+}
+
+.button-filter {
+  border: none;
+  outline: none;
+  width: 238px;
+  height: 35px;
+  margin-left: 16px;
+  background-color: #56CCF2;
+  margin-top: 16px;
+  cursor: pointer;
+  color: white;
+  &:hover {
+    color: black;
+    background-color: #BDBDBD;
+  }
+}
+
+.stock {
+  width: 850px;
+}
+
+.stock-title {
+  font-family: $font-family;
+  font-weight: bold;
+  font-size: 22px;
+  margin-top: 18px;
+  color: #333333;
+}
+
+.wrapper-pagination-sort {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.wrapper-pagination {
+  width: 185px;
+  display: flex;
+  justify-content: space-between;
+  div {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $bgc-white;
+    font-family: $font-family;
+    font-size: 16px;
+    &:hover {
+      background-color: #56ccf2;
+      cursor: pointer;
+    }
+  }
+}
+
+.wrapper-sort {
+  display: flex;
+  p {
+    display: flex;
+    align-items: center;
+    padding-right: 20px;
+    font-family: $font-family;
+    font-size: 16px;
+  }
+}
+
+select {
+  width: 207px;
+  height: 35px;
+}
+
+.wrapper-stock {
+  display: flex;
+  flex-direction: column;
+}
+
+.stock-item {
+  margin-top: 16px;
+  background-color: $bgc-white;
+  display: flex;
+  img {
+    width: 224px;
+    height: 168px;
+    margin: 16px;
+  }
+}
+
+.wrapper-description {
+  .wrapper-title-price {
+    width: 600px;
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    .title-stock {
+      font-family: $font-family;
+      font-weight: 500;
+      font-size: 18px;
+    }
+    p {
+      font-family: $font-family;
+      margin-right: 16px;
+      font-weight: 500;
+      font-size: 16px;
+      color: $color-text;
+    }
+  }
+}
+
+.description-stock {
+  font-family: $font-family;
+  max-width: 399px;
+  margin-top: 16px;
+  font-weight: 300;
+  font-size: 14px;
+  color: #828282;
+}
+
+.wrapper-characteristics {
+  margin-top: 22px;
+  margin-bottom: 16px;
+  display: flex;
+  div {
+    background-color: #c4c4c4;
     color: white;
+    padding: 5px 10px;
+    margin-right: 16px;
+    font-family: $font-family;
+    font-size: 14px;
+  }
+}
+
+.truck-description,
+.truck-description-dop {
+  width: 565px;
+  margin-top: 24px;
+  font-family: $font-family;
+  font-size: 16px;
+  color: $color-text;
+}
+
+.truck-description-dop {
+  margin-top: 10px;
+  margin-bottom: 23px;
+}
+
+.wrapper-footer {
+  background-color: $bgc-white;
+  display: flex;
+  .wrapper-company-contact {
+    .footer-logo {
+      padding-top: 39px;
+      margin-left: 19px;
+      font-family: $font-family;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .adress,
+    .phone {
+      display: flex;
+      padding-left: 22px;
+      padding-top: 18px;
+      i {
+        padding-right: 10px;
+        color: #828282;
+      }
+      p {
+        width: 180px;
+        font-family: $font-family;
+        font-size: 14px;
+        color: $color-text;
+      }
+    }
+  }
+}
+
+.seti {
+  padding-left: 22px;
+  padding-top: 18px;
+  display: flex;
+  a {
+    margin-right: 20px;
+    cursor: pointer;
+    i {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      border: 1px solid #828282;
+      border-radius: 50%;
+      color: #828282;
+      margin-bottom: 38px;
+      &:hover {
+        background-color: #828282;
+        color: white;
+      }
+    }
+  }
+}
+
+.wrapper-description-company {
+  margin-top: 75px;
+  margin-left: 40px;
+  width: 561px;
+  font-family: $font-family;
+  font-size: 14px;
+  color: $color-text;
+}
+
+.copyright {
+  max-width: 1140px;
+  margin: 0 auto;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  p {
+    font-family: $font-family;
+    font-size: 14px;
+    color: $color-text;
+    span {
+      color: #2f80ed;
+    }
   }
 }

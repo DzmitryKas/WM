@@ -1,10 +1,121 @@
-
+- let json = require('./data/dataset.json');
 doctype html
 html
   head
     meta(charset="utf-8")
     link(href="style.css" rel="stylesheet")
-    //- script(src="./data/dataset.json")
+    link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous")
   body
-    .test #{json.page_meta.h1}
+    header.header
+      .wrapper-header
+        .wrapper-title
+          h1.header-title TRUKS
+        nav.header-navigation
+          ul
+            - var list = json.nav
+            each item in list
+              li: a(href=item.href)= item.text
+    main.main
+      .main-wrapper
+        .wrapper-breadcrumb
+          ul
+            - var list = json.breadcrumbs
+            each item in list
+              li: a(href=item.href)= item.text
+        .section-wrapper
+          aside.filter
+            .results 26 Results Found
+            p.param1 param1
+            .value1
+              input(type="checkbox" id="value1" name="value1" checked)
+              label(for="value1") value1
+            .value1
+              input(type="checkbox" id="value2" name="value2")
+              label(for="value2") value2
+            .value1
+              input(type="checkbox" id="value3" name="value3")
+              label(for="value3") value3
+            .value1
+              input(type="checkbox" id="value4" name="value4")
+              label(for="value4") value4
+            p.param2 param2
+            .value2
+              input(type="radio" id="value1" name="value1")
+              label(for="value1") value1
+            .value2
+              input(type="radio" id="value2" name="value2")
+              label(for="value2") value2
+            .value2
+              input(type="radio" id="value3" name="value3")
+              label(for="value3") value3
+            .value2
+              input(type="radio" id="value4" name="value4")
+              label(for="value4") value4
+            p.param3 param3
+              .wrapper-input
+                input(type="text" placeholder="min")
+                input(type="text" placeholder="max")
+            p.param4 param4
+              input(type="text" placeholder="Keywords")
+            button.button-filter SEARCH
+          section.stock
+            h1.stock-title= json.page_meta.h1
+            .wrapper-pagination-sort
+              .wrapper-pagination
+                div &lt;
+                div 1
+                div 2
+                div &gt;
+              .wrapper-sort
+                p Sort by
+                select
+                  option(value="") Sort options
+                  option(value="1") 1
+            .wrapper-stock
+              ul
+                - var list = json.stock
+                - for (var x = 0; x < list.length; x++)
+                  li.stock-item
+                    img.img-stock(src=`./img/${x + 1}.jpg`)
+                    .wrapper-description
+                      .wrapper-title-price
+                        h2.title-stock= list[x].make + ' ' + list[x].model
+                        p.price= list[x].price + ' ' + list[x].price_currency
+                      p.description-stock= json.page_text[2].content
+                      .wrapper-characteristics
+                        .year= list[x].year
+                        .milleage= list[x].mileage + ' ' + list[x].mileage_measure
+                        .axle= list[x].axle_configuration
+            .wrapper-pagination-sort
+              .wrapper-pagination
+                div &lt;
+                div 1
+                div 2
+                div &gt;
+              .wrapper-sort
+                p Sort by
+                select
+                  option(value="") Sort options
+                  option(value="1") 1
+            P.truck-description= json.page_text[0].content
+            P.truck-description-dop= json.page_text[1].content
+    footer.footer
+      .wrapper-footer
+        .wrapper-company-contact
+          .footer-logo Logo / Company Name
+          .adress
+            i(class="fas fa-map-marker-alt")
+            p Company Adress: Lorem ipsum dolor sit amet  18600, Netherlands
+          .phone
+            i(class="fas fa-phone")
+            p +38 958 755-00-00
+          .seti
+            a: i(class="fab fa-facebook-f")
+            a: i(class="fab fa-instagram")
+            a: i(class="fab fa-twitter")
+            a: i(class="fab fa-youtube")
+        .wrapper-description-company
+          p Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet quos ullam atque accusantium ratione molestias soluta, provident nobis, assumenda dolorum voluptas incidunt inventore quia reiciendis quis. Quis quo molestias repellat.
+    .copyright
+      p © 2019 - #[span Privacy Policy - Terms and Conditions]
     script(src="app.bundle.js")

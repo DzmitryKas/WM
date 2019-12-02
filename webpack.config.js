@@ -3,8 +3,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Fs = require('fs');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPugPlugin = require('html-webpack-pug-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
-const dataFromFile = JSON.parse(Fs.readFileSync('./src/data/dataset.json'))
+const json = JSON.parse(Fs.readFileSync('./src/data/dataset.json'))
 // console.log(dataFromFile);
 
 module.exports = {
@@ -40,7 +41,11 @@ module.exports = {
   new ExtractTextPlugin({
     filename: 'style.css'
   }),
-  new HtmlWebpackPugPlugin()
+  new HtmlWebpackPugPlugin(),
+  new CopyPlugin([
+    { from: './src/img', to: 'img'},
+    { from: './src/data', to: 'data'}
+  ]),
 ],
 
 };
