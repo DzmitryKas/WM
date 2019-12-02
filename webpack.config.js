@@ -5,47 +5,42 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPugPlugin = require('html-webpack-pug-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
-const json = JSON.parse(Fs.readFileSync('./src/data/dataset.json'))
-// console.log(dataFromFile);
-
 module.exports = {
   entry: './src/index.js',
   output: {
     filename: 'app.bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist')
   },
   devtool: 'source-map',
   module: {
     rules: [
       {
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract(
-          {
-            fallback: 'style-loader',
-            use: ['css-loader', 'sass-loader']
-          })
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'sass-loader']
+        })
       },
       {
         test: /\.pug$/,
         loader: 'pug-loader'
       }
-    ],
+    ]
   },
   plugins: [
-  new HtmlWebpackPlugin({
-    inject: false,
-    hash: true,
-    template: './src/index.pug',
-    filename: 'index.html'
-  }),
-  new ExtractTextPlugin({
-    filename: 'style.css'
-  }),
-  new HtmlWebpackPugPlugin(),
-  new CopyPlugin([
-    { from: './src/img', to: 'img'},
-    { from: './src/data', to: 'data'}
-  ]),
-],
-
+    new HtmlWebpackPlugin({
+      inject: false,
+      hash: true,
+      template: './src/index.pug',
+      filename: 'index.html'
+    }),
+    new ExtractTextPlugin({
+      filename: 'style.css'
+    }),
+    new HtmlWebpackPugPlugin(),
+    new CopyPlugin([
+      { from: './src/img', to: 'img' },
+      { from: './src/data', to: 'data' }
+    ])
+  ]
 };
